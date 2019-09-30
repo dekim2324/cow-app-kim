@@ -3,8 +3,13 @@ var db = require('../database/index');
 module.exports = {
     cows: {
 
-        get: () => {
+        get: (callback) => {
+            let queryStr = 'SELECT * FROM cow;'
 
+            db.query(queryStr, (err, result) => {
+                if(err) throw err;
+                callback(null, result)
+            })
         },
 
         post: ({name, description}, callback) => {

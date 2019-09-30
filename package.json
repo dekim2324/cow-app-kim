@@ -4,20 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "build": "webpack -d --watch",
+    "server": "nodemon ./server/index.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dekim2324/cow-app-kim.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dekim2324/cow-app-kim/issues"
+  },
+  "homepage": "https://github.com/dekim2324/cow-app-kim#readme",
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mysql": "^2.17.1",
+    "nodemon": "^1.19.3",
     "react": "^16.10.1",
-    "react-dom": "^16.10.1"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.2"
+    "react-dom": "^16.10.1",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
