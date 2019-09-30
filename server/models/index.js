@@ -23,6 +23,10 @@ module.exports = {
                 callback(null, result);
             })
 
+        },
+
+        delete: () => {
+            console.log('delete received')
         }
     }
 };

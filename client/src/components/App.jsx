@@ -16,7 +16,8 @@ class App extends Component {
         fetch('/api/cows')
             .then(cow => cow.json())
             .then(cow => this.setState({cowList: cow}, () => console.log(cow)))
-    }
+    };
+
 
     render() {
         return(
@@ -26,7 +27,7 @@ class App extends Component {
                     )} */}
                 <Top />
                 <Input />
-                <CowList list={this.state.cowList}/>
+                <CowList list={this.state.cowList} />
             </div>
         )
     }

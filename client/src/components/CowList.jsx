@@ -5,7 +5,10 @@ function CowList({ list }) {
     return(
         <div>
              {list.map(cow => 
-                    <Cow cow={cow} key={cow.id}/>
+                    <Cow 
+                    cow={cow} 
+                    key={cow.id} 
+                    />
                     )}
         </div>
     )
