@@ -12,7 +12,7 @@ app.get('/api/cows', (req, res) => {
     models.cows.get((err, result) => {
         if(err) throw err;
         console.log(result)
-        res.send(result)
+        res.json(result)
     })
 })
 

@@ -11,7 +11,8 @@ class App extends Component {
 
     componentDidMount() {
         fetch('/api/cows')
-            .then(cow => console.log(cow))
+            .then(cow => cow.json())
+            .then(cow => console.log('this is result', cow))
     }
 
     render() {
