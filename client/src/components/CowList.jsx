@@ -1,6 +1,7 @@
 import React from 'react';
 import Cow from './Cow.jsx';
 
+
 function CowList({ list }) {
     return(
         <div>

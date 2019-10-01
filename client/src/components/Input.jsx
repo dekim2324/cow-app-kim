@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class Input extends Component {
     constructor() {
         super();
@@ -12,6 +13,17 @@ class Input extends Component {
     handleSubmit(e) {
         e.preventDefault();
         console.log({cow: this.state.cow, description: this.state.description})
+        fetch('/api/cows', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: this.state.cow,
+                description: this.state.description,
+              }),
+        })
     };
 
     handleChange(e) {
