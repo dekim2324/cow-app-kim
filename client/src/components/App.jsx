@@ -30,6 +30,14 @@ class App extends Component {
         })
     };
 
+    handleOneCow(cowname) {
+        this.setState({
+            cowList: this.state.cowList.filter(cow => {
+                return cow.name !== cowname
+            })
+        })
+    }
+
     render() {
         return(
             <div>
@@ -38,7 +46,7 @@ class App extends Component {
                 handleMore={this.handleMore.bind(this)}
                 handleDelete={this.handleDelete.bind(this)}
                 />
-                <CowList list={this.state.cowList} />
+                <CowList handleOneCow={this.handleOneCow.bind(this)} list={this.state.cowList} />
             </div>
         )
     }

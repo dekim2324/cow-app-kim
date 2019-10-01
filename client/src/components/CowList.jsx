@@ -2,13 +2,14 @@ import React from 'react';
 import Cow from './Cow.jsx';
 
 
-function CowList({ list }) {
+function CowList({ list, handleOneCow }) {
     return(
         <div>
              {list.map(cow => 
                     <Cow 
                     cow={cow} 
                     key={cow.id} 
+                    handleOneCow={handleOneCow}
                     />
                     )}
         </div>

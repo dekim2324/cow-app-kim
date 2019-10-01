@@ -11,7 +11,8 @@ class Cow extends Component {
     };
 
     handleOneCowDelete(e) {
-        alert(this.state.currentCow)
+        this.props.handleOneCow(this.state.currentCow)
+
     }
 
     render() {
