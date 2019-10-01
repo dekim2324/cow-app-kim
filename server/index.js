@@ -11,7 +11,7 @@ app.get('/api/cows', (req, res) => {
  
     models.cows.get((err, result) => {
         if(err) throw err;
-        console.log(result)
+        
         res.json(result)
     })
 })
@@ -22,7 +22,8 @@ app.post('/api/cows', (req, res) => {
     res.status(200);
     models.cows.post(req.body, (err, result) => {
         if(err) throw err;
-        res.send(result);
+        console.log(result.insertId)
+        res.json(result.insertId);
     })
 });
 

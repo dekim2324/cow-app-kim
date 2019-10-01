@@ -23,7 +23,7 @@ class Input extends Component {
                 name: this.state.cow,
                 description: this.state.description,
               }),
-        })
+        }).then((cow) => console.log(cow))
     };
 
     handleChange(e) {
