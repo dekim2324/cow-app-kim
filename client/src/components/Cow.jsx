@@ -6,16 +6,11 @@ class Cow extends Component {
         super();
     };
 
-    // handleDelete(id) {
-    //     models.cows.delete()
-    // };
-
     render() {
         return(
             <div style={style}>
             <li>
-                <span 
-                >X </span> 
+                <span>X </span> 
                  {this.props.cow.name} {this.props.cow.description} 
                 </li>
             </div>

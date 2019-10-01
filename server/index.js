@@ -27,6 +27,16 @@ app.post('/api/cows', (req, res) => {
     })
 });
 
+app.delete('/api/cows', (req, res) => {
+    
+    models.cows.delete((err, res) => {
+        if(err) throw err;
+       
+    });
+
+});
+
+
 
 
 const PORT = process.env.PORT || 3000;

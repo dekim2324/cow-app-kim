@@ -18,15 +18,26 @@ class App extends Component {
             .then(cow => this.setState({cowList: cow}, () => console.log(cow)))
     };
 
+    handleMore(newCow) {
+        this.setState({
+            cowList: [...this.state.cowList, newCow]
+        })
+    };
+
+    handleDelete() {
+        this.setState({
+            cowList: []
+        })
+    };
 
     render() {
         return(
             <div>
-                {/* {this.state.cowList.map(cow => 
-                    <li key={cow.id}>{cow.description}</li>
-                    )} */}
                 <Top />
-                <Input />
+                <Input 
+                handleMore={this.handleMore.bind(this)}
+                handleDelete={this.handleDelete.bind(this)}
+                />
                 <CowList list={this.state.cowList} />
             </div>
         )

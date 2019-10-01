@@ -25,8 +25,15 @@ module.exports = {
 
         },
 
-        delete: () => {
+        delete: (callback) => {
             console.log('delete received')
+            const deleteCow = `TRUNCATE cow`;
+
+            db.query(deleteCow, (err, result) => {
+                if(err) throw err;
+
+                callback(null, result);
+            })
         }
     }
 };
