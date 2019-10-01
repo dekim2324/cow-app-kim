@@ -3,14 +3,22 @@ import React, {Component} from 'react';
 
 class Cow extends Component {
     constructor(props) {
-        super();
+        super(props);
+
+        this.state = {
+            currentCow: this.props.cow.name
+        }
     };
+
+    handleOneCowDelete(e) {
+        alert(this.state.currentCow)
+    }
 
     render() {
         return(
             <div style={style}>
             <li>
-                <span>X </span> 
+                <span onClick={(e) => this.handleOneCowDelete(e)}>X </span> 
                  {this.props.cow.name} {this.props.cow.description} 
                 </li>
             </div>
