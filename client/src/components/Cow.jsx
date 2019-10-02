@@ -11,7 +11,20 @@ class Cow extends Component {
     };
 
     handleOneCowDelete(e) {
+
+        console.log('delete this cow: ', this.state.currentCow)
         this.props.handleOneCow(this.state.currentCow)
+
+        fetch('/api/cows', {
+            method: 'delete',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                cow: this.state.currentCow
+              }),
+        }).then((res) => res)
 
     }
 
@@ -39,5 +52,7 @@ const style = {
     fontSize: '18px',
     fontFamily: "Comic Sans MS"
 }
+
+
 
 export default Cow;

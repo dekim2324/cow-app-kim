@@ -25,14 +25,31 @@ module.exports = {
 
         },
 
-        delete: (callback) => {
-            console.log('delete received')
-            const deleteCow = `TRUNCATE cow`;
+        delete: ({cow}, callback) => {
+            console.log('cow', cow)
 
-            db.query(deleteCow, (err, result) => {
+            const deleteCow = `TRUNCATE cow`;
+            const deleteOne = `DELETE FROM cow WHERE name = '${cow}'`;
+            let queryStr;
+
+            cow ? queryStr = deleteOne : queryStr = deleteCow;
+            
+            console.log('this is queryStr', queryStr)
+
+            db.query(queryStr, (err, result) => {
                 if(err) throw err;
 
                 callback(null, result);
+            })
+        },
+
+        deleteOne: (cowName, callback) => {
+            const deleteOne = `DELETE FROM cow WHERE name = ${cowName}`;
+
+            db.query(deleteOne, (err, result) => {
+                if(err) throw err;
+
+                
             })
         }
     }

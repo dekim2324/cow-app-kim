@@ -28,11 +28,15 @@ app.post('/api/cows', (req, res) => {
 });
 
 app.delete('/api/cows', (req, res) => {
+    console.log('one delete -->', req.body)
+
+        models.cows.delete(req.body, (err, res) => {
+            if(err) throw err;
+            
+        });
     
-    models.cows.delete((err, res) => {
-        if(err) throw err;
-       
-    });
+
+    
 
 });
 
