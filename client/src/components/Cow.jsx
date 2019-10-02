@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-// var models = require('../../../server/models/index');
 
 class Cow extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            currentCow: this.props.cow.name
+            currentCow: this.props.cow.name,
+            editMode: false,
+            newCow: null
         }
     };
 
@@ -26,25 +27,61 @@ class Cow extends Component {
               }),
         }).then((res) => res)
 
+    };
+
+    handleEdit(e) {
+        this.setState({
+            editMode: true
+        })
+    };
+
+    handleKeyUp(e) {
+    
+        if(e.key === 'Enter') {
+            this.setState({
+                editMode: false
+            })
+            console.log(this.state.currentCow)
+            this.props.handleEditCow(this.state.currentCow, this.state.newCow)
+        }
+
+        this.setState({
+            newCow: e.target.value
+        })
     }
 
     render() {
+
+        let theList = {};
+        let theChange = {};
+        
+        if(this.state.editMode === false) {
+            theChange.display = 'none'
+        } else  {
+            theList.display = 'none'
+        }
+
+
         return(
             <div style={style}>
             <li>
                 <span onClick={(e) => this.handleOneCowDelete(e)}>X </span> 
-                 {this.props.cow.name} {this.props.cow.description} 
+                <span style={theList}>{this.props.cow.name} {this.props.cow.description}</span> 
+                <input 
+                style={theChange} 
+                type="text"
+                onKeyUp={(e) => this.handleKeyUp(e)}
+                />
+                 <button 
+                 onClick={(e) => {this.handleEdit(e)}} 
+                 style={{marginLeft: "10px"}}
+                 >edit</button>
                 </li>
             </div>
         )
     }
     
 }
-// onClick={handleDelete}
-// Cow.propTypes = {
-//     cow: React.PropTypes.object.isRequired
-// }
-
 const style = {
     listStyleType: 'none',
     textAlign: 'center',

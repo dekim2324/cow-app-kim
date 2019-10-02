@@ -36,6 +36,21 @@ class App extends Component {
                 return cow.name !== cowname
             })
         })
+    };
+
+    handleEditCow(cowname, newMsg) {
+
+        let newList = this.state.cowList.map(cow => {
+            if(cow.name === cowname) {
+                return {id: cow.id, name: cow.name, description: newMsg}
+            } else {
+                return cow
+            }
+        });
+        console.log(newList)
+        this.setState({
+            cowList: newList
+        });
     }
 
     render() {
@@ -46,7 +61,12 @@ class App extends Component {
                 handleMore={this.handleMore.bind(this)}
                 handleDelete={this.handleDelete.bind(this)}
                 />
-                <CowList handleOneCow={this.handleOneCow.bind(this)} list={this.state.cowList} />
+                <CowList 
+                handleOneCow={this.handleOneCow.bind(this)} 
+                handleEditCow={this.handleEditCow.bind(this)}
+                list={this.state.cowList} 
+                
+                />
             </div>
         )
     }
