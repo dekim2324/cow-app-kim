@@ -42,7 +42,20 @@ class Cow extends Component {
                 editMode: false
             })
             console.log(this.state.currentCow)
-            this.props.handleEditCow(this.state.currentCow, this.state.newCow)
+            this.props.handleEditCow(this.state.currentCow, this.state.newCow);
+
+            fetch('/api/cows', {
+                method: 'put',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    cow: this.state.currentCow,
+                    msg: this.state.newCow
+                  }),
+            }).then((res) => res)
+
         }
 
         this.setState({

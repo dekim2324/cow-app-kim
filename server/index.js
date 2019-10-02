@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('./client/dist'));
 
+
+
 app.get('/api/cows', (req, res) => {
  
     models.cows.get((err, result) => {
@@ -15,7 +17,6 @@ app.get('/api/cows', (req, res) => {
         res.json(result)
     })
 })
-
 
 app.post('/api/cows', (req, res) => {
     console.log('---->', req.body)
@@ -31,15 +32,17 @@ app.delete('/api/cows', (req, res) => {
     console.log('one delete -->', req.body)
 
         models.cows.delete(req.body, (err, res) => {
-            if(err) throw err;
-            
-        });
-    
-
-    
-
+            if(err) throw err;        
+ });
 });
 
+app.put('/api/cows', (req, res) => {
+    console.log('put req --> ', req.body)
+
+    models.cows.put(req.body, (err, res) => {
+        if(err) throw err;
+    })
+})
 
 
 

@@ -43,13 +43,14 @@ module.exports = {
             })
         },
 
-        deleteOne: (cowName, callback) => {
-            const deleteOne = `DELETE FROM cow WHERE name = ${cowName}`;
+        put: ({cow, msg}, callback) => {
 
-            db.query(deleteOne, (err, result) => {
+            const queryStr = `UPDATE cow SET description='${msg}' WHERE name='${cow}'`
+
+            db.query(queryStr, (err, result) => {
                 if(err) throw err;
 
-                
+                callback(null, result)
             })
         }
     }
